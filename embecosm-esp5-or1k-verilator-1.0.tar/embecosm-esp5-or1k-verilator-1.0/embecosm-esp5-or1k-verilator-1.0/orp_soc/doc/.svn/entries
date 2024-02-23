@@ -1,0 +1,81 @@
+9
+
+dir
+308
+svn://thomas/embecosm/trunk/Projects/or1k-verilator/orp_soc/doc
+svn://thomas
+
+
+
+2009-02-16T11:36:24.944149Z
+308
+jeremy
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
+
+or1200
+dir
+
+uart16550
+dir
+
+dbg_interface
+dir
+
+ORP.txt
+file
+
+
+
+
+2009-02-16T11:07:48.000000Z
+6d67eeaf8b614f3137f30bc72788074e
+2009-02-16T11:36:24.944149Z
+308
+jeremy
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2305
+
+ethernet
+dir
+

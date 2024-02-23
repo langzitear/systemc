@@ -1,0 +1,124 @@
+		      Verilator SystemC Model of ORPSoC
+		      =================================
+
+$Id: ChangeLog 312 2009-02-19 19:15:54Z jeremy $
+
+	
+19-Feb-2009  Jeremy Bennett  <jeremy.bennett@embecosm.com>
+
+	* AUTHORS, ChangeLog, COPYING, COPYING.LESSER, INSTALL, Makefile,
+	* NEWS, OrpsocMain.cpp, OrpsocMain.h, README,
+	* local/bench/verilog/bench_defines.v,
+	* local/bench/verilog/or1200_monitor.v,
+	* local/bench/verilog/orpsoc_bench.v,
+	* local/rtl/verilog/orpsoc_fpga_defines.v,
+	* local/rtl/verilog/orpsoc_fpga_top.v,
+	* local/rtl/verilog/dbg_interface/dbg_crc8_d1.v,
+	* local/rtl/verilog/dbg_interface/dbg_top-2.v,
+	* local/rtl/verilog/dbg_interface/dbg_top-3.v,
+	* local/rtl/verilog/dbg_interface/dbg_top.v,
+	* local/rtl/verilog/ethernet/eth_clockgen.v,
+	* local/rtl/verilog/ethernet/eth_fifo.v,
+	* local/rtl/verilog/ethernet/eth_miim.v,
+	* local/rtl/verilog/ethernet/eth_receivecontrol.v,
+	* local/rtl/verilog/ethernet/eth_registers.v,
+	* local/rtl/verilog/ethernet/eth_rxcounters.v,
+	* local/rtl/verilog/ethernet/eth_shiftreg.v,
+	* local/rtl/verilog/ethernet/eth_spram_256x32-2.v,
+	* local/rtl/verilog/ethernet/eth_spram_256x32.v,
+	* local/rtl/verilog/ethernet/eth_transmitcontrol.v,
+	* local/rtl/verilog/ethernet/eth_txcounters.v,
+	* local/rtl/verilog/ethernet/eth_txethmac.v,
+	* local/rtl/verilog/ethernet/eth_wishbone-2.v,
+	* local/rtl/verilog/ethernet/eth_wishbone-3.v,
+	* local/rtl/verilog/ethernet/eth_wishbone-4.v,
+	* local/rtl/verilog/ethernet/eth_wishbone.v,
+	* local/rtl/verilog/mem_if/flash_top.v,
+	* local/rtl/verilog/mem_if/sram_top.v,
+	* local/rtl/verilog/or1200/or1200_alu.v,
+	* local/rtl/verilog/or1200/or1200_cfgr.v,
+	* local/rtl/verilog/or1200/or1200_ctrl.v,
+	* local/rtl/verilog/or1200/or1200_defines.v,
+	* local/rtl/verilog/or1200/or1200_dmmu_top.v,
+	* local/rtl/verilog/or1200/or1200_du.v,
+	* local/rtl/verilog/or1200/or1200_except.v,
+	* local/rtl/verilog/or1200/or1200_genpc-2.v,
+	* local/rtl/verilog/or1200/or1200_genpc.v,
+	* local/rtl/verilog/or1200/or1200_gmultp2_32x32.v,
+	* local/rtl/verilog/or1200/or1200_lsu.v,
+	* local/rtl/verilog/or1200/or1200_mult_mac-2.v,
+	* local/rtl/verilog/or1200/or1200_mult_mac.v,
+	* local/rtl/verilog/or1200/or1200_operandmuxes.v,
+	* local/rtl/verilog/or1200/or1200_reg2mem.v,
+	* local/rtl/verilog/or1200/or1200_rfram_generic.v,
+	* local/rtl/verilog/or1200/or1200_sprs-2.v,
+	* local/rtl/verilog/or1200/or1200_sprs.v,
+	* local/rtl/verilog/ps2/ps2_keyboard-2.v,
+	* local/rtl/verilog/ps2/ps2_keyboard-3.v,
+	* local/rtl/verilog/ps2/ps2_keyboard.v,
+	* local/rtl/verilog/ps2/ps2_top.v,
+	* local/rtl/verilog/ps2/ps2_translation_table.v,
+	* local/rtl/verilog/ps2/ps2_wb_if-2.v,
+	* local/rtl/verilog/ps2/ps2_wb_if.v,
+	* local/rtl/verilog/ssvga/ssvga_dpram_4x16x16.v,
+	* local/rtl/verilog/ssvga/ssvga_dpram_4x8x16.v,
+	* local/rtl/verilog/ssvga/ssvga_fifo.v,
+	* local/rtl/verilog/ssvga/ssvga_top.v,
+	* local/rtl/verilog/ssvga/ssvga_wbm_if.v,
+	* local/rtl/verilog/uart16550/uart_receiver.v,
+	* local/rtl/verilog/uart16550/uart_regs-2.v,
+	* local/rtl/verilog/uart16550/uart_regs.v,
+	* local/rtl/verilog/uart16550/uart_rfifo.v,
+	* local/rtl/verilog/uart16550/uart_tfifo.v,
+	* local/rtl/verilog/uart16550/uart_transmitter-2.v,
+	* local/rtl/verilog/uart16550/uart_transmitter.v, local/sw/Makefile,
+	* local/sw/dhry/dhry.c, local/sw/dhry/dhry.h,
+	* local/sw/dhry/dhry-O2.s, local/sw/dhry/Makefile,
+	* local/sw/support/board.h, local/sw/support/except.S,
+	* local/sw/support/int.c, local/sw/support/int.h,
+	* local/sw/support/Makefile, local/sw/support/mc.h,
+	* local/sw/support/orp.cfg, local/sw/support/orp.ld,
+	* local/sw/support/reset.S, local/sw/support/spr_defs.h,
+	* local/sw/support/support.c, local/sw/support/support.h,
+	* local/sw/support/support.s, local/sw/support/virtex.tim,
+	* local/sw/utils/bin2c.c, local/sw/utils/bin2flimg.c,
+	* local/sw/utils/bin2hex.c, local/sw/utils/bin2srec.c,
+	* local/sw/utils/loader.c, local/sw/utils/Makefile,
+	* local/sw/utils/marksec, local/sw/utils/merge2srec, results/doit,
+	* results/iv-perf.ods, sim/cf-baseline-5.scr, sim/cf-baseline.scr,
+	* sim/cf-optimized-8.scr, sysc-modules/Makefile,
+	* sysc-modules/Or1200MonitorSC.cpp, sysc-modules/Or1200MonitorSC.h,
+	* sysc-modules/ResetSC.cpp, sysc-modules/ResetSC.h,
+	* verilator-model/cf-baseline-2.scr,
+	* verilator-model/cf-baseline-3.scr,
+	* verilator-model/cf-baseline-4.scr,
+	* verilator-model/cf-baseline-5.scr,
+	* verilator-model/cf-baseline.scr,
+	* verilator-model/cf-optimized-1.scr,
+	* verilator-model/cf-optimized-2.scr,
+	* verilator-model/cf-optimized-3.scr,
+	* verilator-model/cf-optimized-4.scr,
+	* verilator-model/cf-optimized-5.scr,
+	* verilator-model/cf-optimized-6.scr,
+	* verilator-model/cf-optimized-7.scr,
+	* verilator-model/cf-optimized-8.scr, verilator-model/Makefile,
+	* verilator-model/OrpsocAccess.cpp, verilator-model/OrpsocAccess.h,
+	* verilator-model/TraceSC.cpp,
+	* verilator-model/TraceSC.h: Initial version created
+
+
+COPYING
+=======
+
+Part of this distribution includes code from the OpenRISC Reference Platform
+System-on-Chip (ORPSoC), licensed under the GNU Lesser General Public License
+(LGPL). The licensing of such code is identified in comments at the head of
+each source file. All other code is licensed under the GNU General Public
+License (GPL).
+
+Note in particular that this includes some new Verilog source files, so any
+chip or model made, which includes those files will be covered by the GPL, not
+the LGPL.
+
+Full details of both the GPL and LGPL can be found in the files COPYING and
+COPYING.LESSER.

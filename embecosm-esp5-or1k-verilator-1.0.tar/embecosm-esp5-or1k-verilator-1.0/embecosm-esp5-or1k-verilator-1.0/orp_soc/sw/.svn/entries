@@ -1,0 +1,77 @@
+9
+
+dir
+307
+svn://thomas/embecosm/trunk/Projects/or1k-verilator/orp_soc/sw
+svn://thomas
+
+
+
+2009-02-16T11:34:08.644132Z
+307
+jeremy
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
+
+utils
+dir
+
+basic
+dir
+
+cbasic
+dir
+
+dhry
+dir
+
+except
+dir
+
+icm
+dir
+
+orp_mon
+dir
+
+syscall
+dir
+
+tick
+dir
+
+uart
+dir
+
+support
+dir
+
+mul
+dir
+
+mmu
+dir
+
+cust
+dir
+

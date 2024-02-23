@@ -1,0 +1,11 @@
+dm 0x0
+dm 0x100
+dm 0x100
+dm 0x04000100
+dm 0x0
+show_miim_regs
+help
+help
+show_miim_regs
+help
+show_miim_regs

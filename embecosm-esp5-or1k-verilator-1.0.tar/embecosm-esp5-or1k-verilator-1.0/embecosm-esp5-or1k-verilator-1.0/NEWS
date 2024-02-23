@@ -1,0 +1,30 @@
+		      Verilator SystemC Model of ORPSoC
+		      =================================
+
+$Id: NEWS 312 2009-02-19 19:15:54Z jeremy $
+
+
+NEWS
+====
+
+This is the code to accompany Embecosm Application Note 6, "High Performance
+SoC Modeling with Verilator: A Tutorial for Cycle Accurate SystemC Model
+Creation and Optimization.
+
+First version published 19 February, 2009.
+
+COPYING
+=======
+
+Part of this distribution includes code from the OpenRISC Reference Platform
+System-on-Chip (ORPSoC), licensed under the GNU Lesser General Public License
+(LGPL). The licensing of such code is identified in comments at the head of
+each source file. All other code is licensed under the GNU General Public
+License (GPL).
+
+Note in particular that this includes some new Verilog source files, so any
+chip or model made, which includes those files will be covered by the GPL, not
+the LGPL.
+
+Full details of both the GPL and LGPL can be found in the files COPYING and
+COPYING.LESSER.

@@ -1,0 +1,172 @@
+#!/bin/sh
+
+# Script to run all the various tests. These cause a degree of grief, since
+# ccache will get in the way of things. So clear it each time.
+
+#
+echo '**********************'
+echo '*** Icarus Verilog ***'
+echo '**********************'
+echo "simulate cf-baseline.scr"
+ccache -C > /dev/null 2>&1
+make clean simulate COMMAND_FILE=cf-baseline.scr NUM_RUNS=1000 \
+    2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "simulate cf-baseline-5.scr"
+ccache -C > /dev/null 2>&1
+make clean simulate COMMAND_FILE=cf-baseline-5.scr NUM_RUNS=1000 \
+    2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "simulate cf-optimized-8.scr"
+ccache -C > /dev/null 2>&1
+make clean simulate COMMAND_FILE=cf-optimized-8.scr NUM_RUNS=1000 \
+    2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo
+
+echo '************************************'
+echo '*** Verilator Verilog variations ***'
+echo '************************************'
+echo "verilate cf-baseline-5.scr"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-baseline-5.scr \
+    VFLAGS="-Wno-lint -Wno-COMBDLY -Wno-UNOPTFLAT -language 1364-2001" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate cf-optimized-1.scr"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-1.scr \
+    VFLAGS="-Wno-lint -Wno-COMBDLY -Wno-UNOPTFLAT -language 1364-2001" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate cf-optimized-2.scr"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-2.scr \
+    VFLAGS="-Wno-lint -Wno-COMBDLY -Wno-UNOPTFLAT -language 1364-2001" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate cf-optimized-3.scr"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-3.scr \
+    VFLAGS="-Wno-lint -Wno-COMBDLY -Wno-UNOPTFLAT -language 1364-2001" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate cf-optimized-4.scr"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-4.scr \
+    VFLAGS="-Wno-lint -Wno-COMBDLY -Wno-UNOPTFLAT -language 1364-2001" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate cf-optimized-5.scr"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-5.scr \
+    VFLAGS="-Wno-COMBDLY -Wno-UNOPTFLAT -language 1364-2001" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate cf-optimized-6.scr"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-6.scr \
+    VFLAGS="-Wno-UNOPTFLAT -language 1364-2001" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate cf-optimized-7.scr"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-7.scr \
+    VFLAGS="-language 1364-2001" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate cf-optimized-8.scr"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-8.scr \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo
+
+echo '***************************'
+echo '*** Verilator OPT Flags ***'
+echo '***************************'
+echo "verilate OPT_FAST=-O3"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-8.scr OPT_FAST="-O3" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate OPT_SLOW=-O3"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-8.scr OPT_SLOW="-O3" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate OPT=-O3"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-8.scr OPT="-O3" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo
+
+echo '**********************************'
+echo '*** Verilator GCC Optimization ***'
+echo '**********************************'
+echo "verilate OPT=-O0"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-8.scr OPT="-O0" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate OPT=-O1"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-8.scr OPT="-O1" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate OPT=-O2"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-8.scr OPT="-O2" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate OPT=-O3"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-8.scr OPT="-O3" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate OPT=-Os"
+ccache -C > /dev/null 2>&1
+make clean verilate COMMAND_FILE=cf-optimized-8.scr OPT="-Os" \
+    NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo
+
+echo '***********************************'
+echo '*** Verilator GCC -Os Profiling ***'
+echo '***********************************'
+echo "verilate-fast OPT=Os PROF_OPTS=-fbranch-probabilities"
+ccache -C > /dev/null 2>&1
+make clean verilate-fast COMMAND_FILE=cf-optimized-8.scr OPT="-Os" \
+ PROF_OPTS="-fbranch-probabilities" \
+ NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate-fast OPT=Os PROF_OPTS=-fbranch-probabilities -fvpt"
+ccache -C > /dev/null 2>&1
+make clean verilate-fast COMMAND_FILE=cf-optimized-8.scr OPT="-Os" \
+ PROF_OPTS="-fbranch-probabilities -fvpt" \
+ NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate-fast OPT=Os PROF_OPTS=-fbranch-probabilities -fvpt -funroll-loops"
+ccache -C > /dev/null 2>&1
+make clean verilate-fast COMMAND_FILE=cf-optimized-8.scr OPT="-Os" \
+ PROF_OPTS="-fbranch-probabilities -fvpt -funroll-loops" \
+ NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate-fast OPT=Os PROF_OPTS=-fbranch-probabilities -fvpt -funroll-loops -fpeel-loops"
+ccache -C > /dev/null 2>&1
+make clean verilate-fast COMMAND_FILE=cf-optimized-8.scr OPT="-Os" \
+ PROF_OPTS="-fbranch-probabilities -fvpt -funroll-loops -fpeel-loops" \
+ NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate-fast OPT=Os PROF_OPTS=-fbranch-probabilities -fvpt -funroll-loops -fpeel-loops -ftracer"
+ccache -C > /dev/null 2>&1
+make clean verilate-fast COMMAND_FILE=cf-optimized-8.scr OPT="-Os" \
+ PROF_OPTS="-fbranch-probabilities -fvpt -funroll-loops -fpeel-loops -ftracer" \
+ NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo
+
+echo '***********************************'
+echo '*** Verilator GCC -O3 Profiling ***'
+echo '***********************************'
+echo "verilate-fast OPT=O3 PROF_OPTS=-fbranch-probabilities"
+ccache -C > /dev/null 2>&1
+make clean verilate-fast COMMAND_FILE=cf-optimized-8.scr OPT="-O3" \
+ PROF_OPTS="-fbranch-probabilities" \
+ NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate-fast OPT=O3 PROF_OPTS=-fbranch-probabilities -fvpt"
+ccache -C > /dev/null 2>&1
+make clean verilate-fast COMMAND_FILE=cf-optimized-8.scr OPT="-O3" \
+ PROF_OPTS="-fbranch-probabilities -fvpt" \
+ NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate-fast OPT=O3 PROF_OPTS=-fbranch-probabilities -fvpt -funroll-loops"
+ccache -C > /dev/null 2>&1
+make clean verilate-fast COMMAND_FILE=cf-optimized-8.scr OPT="-O3" \
+ PROF_OPTS="-fbranch-probabilities -fvpt -funroll-loops" \
+ NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate-fast OPT=O3 PROF_OPTS=-fbranch-probabilities -fvpt -funroll-loops -fpeel-loops"
+ccache -C > /dev/null 2>&1
+make clean verilate-fast COMMAND_FILE=cf-optimized-8.scr OPT="-O3" \
+ PROF_OPTS="-fbranch-probabilities -fvpt -funroll-loops -fpeel-loops" \
+ NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"
+echo "verilate-fast OPT=O3 PROF_OPTS=-fbranch-probabilities -fvpt -funroll-loops -fpeel-loops -ftracer"
+ccache -C > /dev/null 2>&1
+make clean verilate-fast COMMAND_FILE=cf-optimized-8.scr OPT="-O3" \
+ PROF_OPTS="-fbranch-probabilities -fvpt -funroll-loops -fpeel-loops -ftracer" \
+ NUM_RUNS=1000 2>&1 | sed -n -e "/^user /p" -e "/^sys /p"

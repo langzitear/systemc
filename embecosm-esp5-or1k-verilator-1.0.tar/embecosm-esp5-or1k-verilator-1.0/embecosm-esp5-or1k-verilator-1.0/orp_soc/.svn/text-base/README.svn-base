@@ -1,0 +1,157 @@
+	     OpenRISC Reference Platform System-On-Chip (ORPSoC)
+	     ===================================================
+
+Introduction
+++++++++++++
+
+This is a stripped down snapshot of the ORPSoC source tree from the OpenCores
+website. It is provided as a convenience for use with Embecosm Application
+Note EAN6: "Cycle Accurate Modeling with Verilator: Tutorial Case Study Using
+the OpenRISC Reference Platform System-on-Chip".
+
+This is OpenRISC Test Application. It contains OpenRISC 1200 and a set of
+OpenCores peripherals. The whole test application is designed as a SoC
+(System-on-Chip). Peripherals include UART16550, VGA CRT controller, Audio
+controller, debug interface, Ethernet 10/100 MAC, SRAM and Flash controllers.
+
+OR1200 is a 32-bit RISC with harvard architecture. For XSV800 board it is
+configured with 4/4KB data/instruction caches, no D/I MMU (lack of BlockRAMs),
+and with programmable interrupt controller (PIC), MAC unit, tick timer unit
+and debug unit.
+
+Right now the whole system runs only at 10MHz. This is because we are right
+now focusing on getting functionality working and not optimizing.  Running
+heavily constrained P&R takes much longer.
+
+Software for this test application consists of:
+- ORP (OpenRISC Reference Platform) monitor
+- Linux (uClinux 2.0.36)
+- OpenRISC GNU Toolchain (ANSI C compiler GCC, debugger etc)
+
+Directory Structure
++++++++++++++++++++
+
+bench: test bench (for simulation verification)
+doc: Some of the documentation (more on the OpenCores web)
+rtl: Verilog sources of the XSV FPGA SoC
+sim: For running simulation (not in this snapshot)
+sw: Software example (OR1K GNU toolchain is available from OpenCores web)
+syn: Synthesis scripts/constraints for FPGA and ASIC (not in this snapshot)
+
+Simulation
+++++++++++
+
+NOTE. The sim directory is not provided in this snapshot. It should be
+obtained from the OpenCores website.
+
+Architectural and RTL level simulations can be performed. Running directory
+for all script should be sim/run. The following scripts are available:
+1) sim/bin/run_sw: for building and running architectural simulations. You
+   will need OpenRISC GNU toolchain installed. To have correct toolchain
+   installed, see   which or1ksim is being used (for example or32-rtems-sim,
+   or32-uclinux-sim). This script is also used for building software test
+   cases for run_rtl_regression script. This script can also do 'make clean'
+   through all software test cases.
+2) sim/bin/run_rtl_regression: for running RTL regressions using different
+   software test cases available in sw/ directory. Test cases need first to ben
+   built using run_sw script.
+3) sim/bin/run_rtl_linter: for running linter tool over RTL files.
+
+Architectural simulations copy their logs into sim/log and all log files are
+prefixed with "s-". All RTL simulations copy their log files into sim/log and
+they are prefixed with "iN-" where N is a number representing regression
+iteration. Each iteration has different environment conditions, such as
+latency of memories used, OR1200 configured with different options etc. All
+waveforms from RTL simulations are stored in sim/out/wave directory.
+
+An example of running RTL regression:
+
+$ cd sim/run
+$ ../bin/run_rtl_regression
+Sun Aug 18 07:20:50 2002  0.178955 seconds
+ Test 1: dhry-nocache-O2, 250 ms         Test 2: dhry-icdc-O2, 100 ms   
+ Test 3: mmu-nocache, 100 ms     Test 4: mmu-icdc, 400 ms       
+ Test 5: basic-icdc, 40 ms       Test 6: basic-nocache, 40 ms   
+ Test 7: mul-nocache-O2, 40 ms   Test 8: mul-icdc-O2, 40 ms     
+ Test 9: except-nocache, 60 ms   Test 10: except-icdc, 40 ms    
+ Test 11: cbasic-nocache-O2, 40 ms       Test 12: cbasic-icdc-O0, 40 ms 
+
+ Iteration 1: OR1200_REGISTERED_OUTPUTS+FLASH_GENERIC+FLASH_GENERIC_REGISTERED+SRAM_GENERIC_REGISTERED  
+ Iteration 2: OR1200_REGISTERED_OUTPUTS+FLASH_GENERIC+OR1200_CLMODE_1TO2        
+ Iteration 3: OR1200_REGISTERED_OUTPUTS 
+
+<<<
+<<< Iteration 1: OR1200_REGISTERED_OUTPUTS+FLASH_GENERIC+FLASH_GENERIC_REGISTERED+SRAM_GENERIC_REGISTERED
+<<<
+
+        @@@
+        @@@ Compiling sources
+        @@@
+        @@@ Passed
+
+        @@@
+        @@@ Building design hierarchy (elaboration)
+        @@@
+        @@@ Passed
+
+        ###
+        ### Running test 1: dhry-nocache-O2, 250 ms
+        ###
+        ### Passed (@time 9127052.00)
+
+        ###
+        ### Running test 2: dhry-icdc-O2, 100 ms
+        ###
+        ### Passed (@time 6402152.00)
+<cut>
+
+Synthesis
++++++++++
+
+N/A yet.
+
+Want to help?
++++++++++++++
+
+We need companies, universities and individuals to help us in HW and SW areas.
+
+If you want to help, first go to http://www.opencores.org/cores/or1k-new/ and
+check the status and TODOs. Also read the documentation.
+
+Subscribe to the openrisc mailing list (and read OpenCores FAQ before you post):
+- if you want more information
+- if you want to help with the HW design (test application(s), verification of
+  the OR1200, optimization of OR1200, development of new units etc)
+- if you want to develop software
+
+If you want to help in some other area, please subscribe to main opencores
+mailing list.
+
+About OpenCores
+===============
+
+OpenCores is an organization that developes free, open source soft cores. If
+you would like more information, please visit us at http://www.opencores.org.
+
+We invite companies and individuals to help us in our mission. We need
+experienced designers to verify and design new cores.
+And we need companies and universities to use our existing verified cores in
+projects (the whole purpose of OpenCores is to design free cores that someone
+will use !).
+
+--
+Damjan Lampret, Mar/2002
+Updated by jeremy Bennett, Feb/2009
+$Id$
+
+Revision 1.4  2003/04/07 01:38:46  lampret
+Added some information how to run simulations.
+
+Revision 1.3  2002/03/28 17:48:07  lampret
+Changing directory structure ...
+
+Revision 1.2  2002/03/21 22:14:46  lampret
+Explained 10MHz. Fixed directory name.
+
+Revision 1.1.1.1  2002/03/21 20:47:47  lampret
+First import of the "new" XESS XSV environment.

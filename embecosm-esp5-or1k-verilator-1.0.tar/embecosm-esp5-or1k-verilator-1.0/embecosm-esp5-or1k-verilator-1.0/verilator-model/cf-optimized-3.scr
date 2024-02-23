@@ -1,0 +1,158 @@
+// Verilator Verilog arguments for simulating ORPSoC original setup
+//
+// Copyright (C) 2009 Embecosm Limited
+//
+// Contributor Jeremy Bennett <jeremy.bennett@embecosm.com>
+// 
+// This file is part of the cycle accurate model of the OpenRISC 1000 based
+// system-on-chip, ORPSoC, built using Verilator.
+// 
+// This program is free software; you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by the Free
+// Software Foundation; either version 3 of the License, or (at your option)
+// any later version.
+// 
+// This program is distributed in the hope that it will be useful, but WITHOUT
+// ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+// FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+// more details.
+// 
+// You should have received a copy of the GNU General Public License along
+// with this program.  If not, see <http://www.gnu.org/licenses/>. */
+
+// $Id: cf-optimized-3.scr 310 2009-02-19 14:54:24Z jeremy $
+
+
+// Include search directories. Use our local modified versions for preference
++incdir+$RTL_LOCAL
++incdir+$RTL_LOCAL/or1200
++incdir+$RTL_DIR/or1200
++incdir+$RTL_DIR/dbg_interface
++incdir+$RTL_DIR/audio
++incdir+$RTL_DIR/ethernet
++incdir+$RTL_DIR/ps2
++incdir+$RTL_DIR/uart16550
++incdir+$RTL_DIR/ssvga
+
+// RTL files (top)
+$RTL_LOCAL/orpsoc_fpga_top.v
+$RTL_DIR/tc_top.v
+
+// RTL files (or1200)
+$RTL_DIR/or1200/or1200_iwb_biu.v
+$RTL_DIR/or1200/or1200_wb_biu.v
+$RTL_LOCAL/or1200/or1200_ctrl.v
+$RTL_DIR/or1200/or1200_cpu.v
+$RTL_DIR/or1200/or1200_rf.v
+$RTL_LOCAL/or1200/or1200_rfram_generic.v
+$RTL_LOCAL/or1200/or1200_alu.v
+$RTL_LOCAL/or1200/or1200_lsu.v
+$RTL_LOCAL/or1200/or1200_operandmuxes.v
+$RTL_DIR/or1200/or1200_wbmux.v
+$RTL_LOCAL/or1200/or1200_genpc.v
+$RTL_DIR/or1200/or1200_if.v
+$RTL_DIR/or1200/or1200_freeze.v
+$RTL_LOCAL/or1200/or1200_sprs.v
+$RTL_DIR/or1200/or1200_top.v
+$RTL_DIR/or1200/or1200_pic.v
+$RTL_DIR/or1200/or1200_pm.v
+$RTL_DIR/or1200/or1200_tt.v
+$RTL_LOCAL/or1200/or1200_except.v
+$RTL_DIR/or1200/or1200_dc_top.v
+$RTL_DIR/or1200/or1200_dc_fsm.v
+$RTL_LOCAL/or1200/or1200_reg2mem.v
+$RTL_DIR/or1200/or1200_mem2reg.v
+$RTL_DIR/or1200/or1200_dc_tag.v
+$RTL_DIR/or1200/or1200_dc_ram.v
+$RTL_DIR/or1200/or1200_ic_top.v
+$RTL_DIR/or1200/or1200_ic_fsm.v
+$RTL_DIR/or1200/or1200_ic_tag.v
+$RTL_DIR/or1200/or1200_ic_ram.v
+$RTL_DIR/or1200/or1200_immu_top.v
+$RTL_DIR/or1200/or1200_immu_tlb.v
+$RTL_DIR/or1200/or1200_dmmu_top.v
+$RTL_DIR/or1200/or1200_dmmu_tlb.v
+$RTL_DIR/or1200/or1200_amultp2_32x32.v
+$RTL_DIR/or1200/or1200_gmultp2_32x32.v
+$RTL_DIR/or1200/or1200_cfgr.v
+$RTL_LOCAL/or1200/or1200_du.v
+$RTL_DIR/or1200/or1200_sb.v
+$RTL_LOCAL/or1200/or1200_mult_mac.v
+$RTL_DIR/or1200/or1200_qmem_top.v
+$RTL_DIR/or1200/or1200_spram_2048x32.v
+$RTL_DIR/or1200/or1200_spram_256x21.v
+$RTL_DIR/or1200/or1200_spram_1024x32.v
+$RTL_DIR/or1200/or1200_spram_1024x32_bw.v
+$RTL_DIR/or1200/or1200_spram_64x14.v
+$RTL_DIR/or1200/or1200_spram_64x22.v
+$RTL_DIR/or1200/or1200_spram_64x24.v
+$RTL_DIR/or1200/or1200_xcv_ram32x8d.v
+
+// RTL files (dbg_interface)
+$RTL_LOCAL/dbg_interface/dbg_crc8_d1.v
+$RTL_DIR/dbg_interface/dbg_defines.v
+$RTL_DIR/dbg_interface/dbg_register.v
+$RTL_DIR/dbg_interface/dbg_registers.v
+$RTL_DIR/dbg_interface/dbg_sync_clk1_clk2.v
+$RTL_LOCAL/dbg_interface/dbg_top.v
+
+// RTL files (mem_if)
+$RTL_LOCAL/mem_if/flash_top.v
+$RTL_LOCAL/mem_if/sram_top.v
+
+// RTL files (audio)
+$RTL_DIR/audio/audio_top.v
+
+// RTL files (ethernet)
+$RTL_DIR/ethernet/eth_clockgen.v
+$RTL_DIR/ethernet/eth_crc.v
+$RTL_DIR/ethernet/eth_fifo.v
+$RTL_DIR/ethernet/eth_maccontrol.v
+$RTL_DIR/ethernet/eth_macstatus.v
+$RTL_DIR/ethernet/eth_miim.v
+$RTL_DIR/ethernet/eth_outputcontrol.v
+$RTL_DIR/ethernet/eth_random.v
+$RTL_DIR/ethernet/eth_receivecontrol.v
+$RTL_DIR/ethernet/eth_register.v
+$RTL_DIR/ethernet/eth_registers.v
+$RTL_DIR/ethernet/eth_rxaddrcheck.v
+$RTL_DIR/ethernet/eth_rxcounters.v
+$RTL_DIR/ethernet/eth_rxethmac.v
+$RTL_DIR/ethernet/eth_rxstatem.v
+$RTL_DIR/ethernet/eth_shiftreg.v
+$RTL_DIR/ethernet/eth_transmitcontrol.v
+$RTL_DIR/ethernet/eth_txcounters.v
+$RTL_DIR/ethernet/eth_txethmac.v
+$RTL_DIR/ethernet/eth_txstatem.v
+$RTL_LOCAL/ethernet/eth_wishbone.v
+$RTL_DIR/ethernet/eth_spram_256x32.v
+$RTL_DIR/ethernet/eth_top.v
+
+// RTL files (ps2)
+$RTL_DIR/ps2/ps2_io_ctrl.v
+$RTL_DIR/ps2/ps2_keyboard.v
+$RTL_LOCAL/ps2/ps2_translation_table.v
+$RTL_DIR/ps2/ps2_wb_if.v
+$RTL_LOCAL/ps2/ps2_top.v
+
+// RTL files (uart16550)
+$RTL_DIR/uart16550/raminfr.v
+$RTL_DIR/uart16550/uart_debug_if.v
+$RTL_DIR/uart16550/uart_tfifo.v
+$RTL_DIR/uart16550/uart_rfifo.v
+$RTL_DIR/uart16550/uart_receiver.v
+$RTL_LOCAL/uart16550/uart_regs.v
+$RTL_DIR/uart16550/uart_sync_flops.v
+$RTL_LOCAL/uart16550/uart_transmitter.v
+$RTL_DIR/uart16550/uart_wb.v
+$RTL_DIR/uart16550/uart_top.v
+
+// RTL files (ssvga)
+$RTL_DIR/ssvga/ssvga_crtc.v
+$RTL_DIR/ssvga/ssvga_defines.v
+$RTL_LOCAL/ssvga/ssvga_fifo.v
+$RTL_LOCAL/ssvga/ssvga_top.v
+$RTL_DIR/ssvga/ssvga_wbm_if.v
+$RTL_DIR/ssvga/ssvga_wbs_if.v
+$RTL_LOCAL/ssvga/ssvga_dpram_4x8x16.v
+$RTL_LOCAL/ssvga/ssvga_dpram_4x16x16.v

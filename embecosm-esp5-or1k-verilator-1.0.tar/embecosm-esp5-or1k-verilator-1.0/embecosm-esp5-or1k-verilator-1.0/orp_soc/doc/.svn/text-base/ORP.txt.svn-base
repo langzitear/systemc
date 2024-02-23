@@ -1,0 +1,59 @@
+
+OpenRISC Reference Platform (ORP)
+
+Address Space
+
+0xf000_0000 - 0xffff_ffff  Cached	256MB	ROM
+0xc000_0000 - 0xefff_ffff  Cached	768MB	Reserved
+0xb800_0000 - 0xbfff_ffff  Uncached	128MB	Reserved for custom devices
+0xa600_0000 - 0xb7ff_ffff  Uncached	288MB	Reserved
+0xa500_0000 - 0xa5ff_ffff  Uncached	16MB	Debug 0-15
+0xa400_0000 - 0xa4ff_ffff  Uncached	16MB	Digital Camera Controller 0-15
+0xa300_0000 - 0xa3ff_ffff  Uncached	16MB	I2C Controller 0-15
+0xa200_0000 - 0xa2ff_ffff  Uncached	16MB	TDM Controller 0-15
+0xa100_0000 - 0xa1ff_ffff  Uncached	16MB	HDLC Controller 0-15
+0xa000_0000 - 0xa0ff_ffff  Uncached	16MB	Real-Time Clock 0-15
+0x9f00_0000 - 0x9fff_ffff  Uncached	16MB	Firewire Controller 0-15
+0x9e00_0000 - 0x9eff_ffff  Uncached	16MB	IDE Controller 0-15
+0x9d00_0000 - 0x9dff_ffff  Uncached	16MB	Audio Controller 0-15
+0x9c00_0000 - 0x9cff_ffff  Uncached	16MB	USB Host Controller 0-15
+0x9b00_0000 - 0x9bff_ffff  Uncached	16MB	USB Func Controller 0-15
+0x9a00_0000 - 0x9aff_ffff  Uncached	16MB	General-Purpose DMA 0-15
+0x9900_0000 - 0x99ff_ffff  Uncached	16MB	PCI Controller 0-15
+0x9800_0000 - 0x98ff_ffff  Uncached	16MB	IrDA Controller 0-15
+0x9700_0000 - 0x97ff_ffff  Uncached	16MB	Graphics Controller 0-15
+0x9600_0000 - 0x96ff_ffff  Uncached	16MB	PWM/Timer/Counter Controller 0-15
+0x9500_0000 - 0x95ff_ffff  Uncached	16MB	Traffic COP 0-15
+0x9400_0000 - 0x94ff_ffff  Uncached	16MB	PS/2 Controller 0-15
+0x9300_0000 - 0x93ff_ffff  Uncached	16MB	Memory Controller 0-15
+0x9200_0000 - 0x92ff_ffff  Uncached	16MB	Ethernet Controller 0-15
+0x9100_0000 - 0x91ff_ffff  Uncached	16MB	General-Purpose I/O 0-15
+0x9000_0000 - 0x90ff_ffff  Uncached	16MB	UART16550 Controller 0-15
+0x8000_0000 - 0x8fff_ffff  Uncached	256MB	PCI I/O
+0x4000_0000 - 0x7fff_ffff  Uncached	1GB	Reserved
+0x0000_0000 - 0x3fff_ffff  Cached	1GB	RAM
+
+Interrupts
+
+0	Reserved
+1	Reserved
+2	UART16550 Controller 0
+3	General-Purpose I/O 0
+4	Ethernet Controller 0
+5	PS/2 Controller 0
+6	Traffic COP 0, Real-Time Clock 0
+7	PWM/Timer/Counter Controller 0
+8	Graphics Controller 0
+9	IrDA Controller 0
+10	PCI Controller 0
+11	General-Purpose DMA 0
+12	USB Func Controller 0
+13	USB Host Controller 0
+14	Audio Controller 0
+15	IDE Controller 0
+16	Firewire Controller 0
+17	HDLC Controller 0
+18	TDM Controller 0
+19	I2C Controller 0, Digital Camera Controller 0
+
+
